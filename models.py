@@ -387,9 +387,9 @@ class ExcelReport(models.Model):
         })
 
     def action_create_report(self, extra=None):
-        assert self.xlsx_template
         if extra is None:
             extra = {}
+        assert self.xlsx_template
         attachment = self._create_attachment_with_report(extra)
         return {
             "type": "ir.actions.act_window",
