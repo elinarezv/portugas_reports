@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="excel_report_view_form" model="ir.ui.view">
+          <field name="name">Excel Report (form)</field>
+          <field name="model">portugas_reports.excel_report</field>
+          <field name="arch" type="xml">
+            <form>
+              <group name="attributes" string="Attributes">
+                <field name="report_type" readonly="1" />
+                <field name="xlsx_template" />
+              </group>
+              <button type="object"
+                      name="action_create_report"
+                      string="Create report" />
+            </form>
+          </field>
+        </record>
+
+        <record id="excel_report_view_tree" model="ir.ui.view">
+          <field name="name">Excel Report (list)</field>
+          <field name="model">portugas_reports.excel_report</field>
+          <field name="arch" type="xml">
+            <tree>
+              <field name="report_type" />
+              <field name="xlsx_template" />
+            </tree>
+          </field>
+        </record>
+
+        <record id="action_excel_report_list" model="ir.actions.act_window">
+          <field name="name">Excel Reports</field>
+          <field name="res_model">portugas_reports.excel_report</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="report_sales_per_year" model="portugas_reports.excel_report">
+          <field name="report_type">report_products_by_year</field>
+        </record>
+
+        <record id="report_sales_by_day" model="portugas_reports.excel_report">
+          <field name="report_type">report_sales_by_day</field>
+        </record>
+
+        <record id="report_sales_by_product" model="portugas_reports.excel_report">
+          <field name="report_type">report_sales_by_product</field>
+        </record>
+
+        <record id="report_sales_by_client" model="portugas_reports.excel_report">
+          <field name="report_type">report_sales_by_client</field>
+        </record>
+
+        <menuitem id="menu_root"
+                  name="Excel Reports" />
+        <menuitem id="menu_excel_reports"
+                  name="Excel Reports"
+                  parent="menu_root"
+                  sequence="99"
+                  action="action_excel_report_list" />
+    </data>
+</odoo>
